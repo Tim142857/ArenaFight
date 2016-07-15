@@ -149,7 +149,7 @@ class Personnage {
     /**
      * @var \Joueur
      *
-     * @ORM\ManyToOne(targetEntity="Joueur")
+     * @ORM\ManyToOne(targetEntity="Joueur", inversedBy="personnages")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="joueur", referencedColumnName="id")
      * })
