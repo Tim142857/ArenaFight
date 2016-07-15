@@ -1,3 +1,16 @@
 body{
     background-color: wheat;
 }
+
+
+.banniere{
+    height: 200px;
+    background-color: grey;
+}
+.menu ul{
+    width:100%;
+}
+
+.menu ul li{
+    width:12.5%;
+}

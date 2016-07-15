@@ -11,8 +11,8 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Table(name="joueur")
  * @ORM\Entity(repositoryClass="ArenaFightBundle\Repository\JoueurRepository")
  */
-class Joueur extends BaseUser
-{
+class Joueur extends BaseUser {
+
     /**
      * @var int
      *
@@ -35,20 +35,18 @@ class Joueur extends BaseUser
      * @ORM\Column(name="level", type="integer")
      */
     private $level;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="ArenaFightBundle\Entity\Personnage", mappedBy="joueur", cascade={"remove", "persist"})
      */
     private $personnages;
-
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,8 +57,7 @@ class Joueur extends BaseUser
      *
      * @return Joueur
      */
-    public function setArgent($argent)
-    {
+    public function setArgent($argent) {
         $this->argent = $argent;
 
         return $this;
@@ -71,8 +68,7 @@ class Joueur extends BaseUser
      *
      * @return int
      */
-    public function getArgent()
-    {
+    public function getArgent() {
         return $this->argent;
     }
 
@@ -83,8 +79,7 @@ class Joueur extends BaseUser
      *
      * @return Joueur
      */
-    public function setLevel($level)
-    {
+    public function setLevel($level) {
         $this->level = $level;
 
         return $this;
@@ -95,11 +90,9 @@ class Joueur extends BaseUser
      *
      * @return int
      */
-    public function getLevel()
-    {
+    public function getLevel() {
         return $this->level;
     }
-
 
     /**
      * Add personnage
@@ -108,9 +101,9 @@ class Joueur extends BaseUser
      *
      * @return Joueur
      */
-    public function addPersonnage(\ArenaFightBundle\Entity\Personnage $personnage)
-    {
+    public function addPersonnage(\ArenaFightBundle\Entity\Personnage $personnage) {
         $this->personnages[] = $personnage;
+        $personnage->setJoueur($this);
 
         return $this;
     }
@@ -120,8 +113,7 @@ class Joueur extends BaseUser
      *
      * @param \ArenaFightBundle\Entity\Personnage $personnage
      */
-    public function removePersonnage(\ArenaFightBundle\Entity\Personnage $personnage)
-    {
+    public function removePersonnage(\ArenaFightBundle\Entity\Personnage $personnage) {
         $this->personnages->removeElement($personnage);
     }
 
@@ -130,8 +122,8 @@ class Joueur extends BaseUser
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPersonnages()
-    {
+    public function getPersonnages() {
         return $this->personnages;
     }
+
 }
