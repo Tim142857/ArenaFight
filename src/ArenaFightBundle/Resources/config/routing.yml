@@ -1,0 +1,3 @@
+arena_fight_homepage:
+    path:     /
+    defaults: { _controller: ArenaFightBundle:Default:index }
