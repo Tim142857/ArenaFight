@@ -40,4 +40,8 @@ bee96f,::1,GET,http://localhost/ArenaFight/web/app_dev.php/login,1468593055,,200
 6b4def,::1,GET,http://localhost/ArenaFight/web/app_dev.php/login,1468593152,,200
 36586a,::1,GET,http://localhost/ArenaFight/web/app_dev.php/login,1468593167,,200
 8284a8,::1,GET,http://localhost/ArenaFight/web/app_dev.php/login,1468593197,,200
+<<<<<<< HEAD
 d8631f,::1,GET,http://localhost/ArenaFight/web/app_dev.php/login,1468596319,,200
+=======
+e32edd,::1,GET,http://localhost/ArenaFight/web/app_dev.php/,1468621156,,200
+>>>>>>> 28787a46f3e89280f42a80651e8039d8ae13f17e
