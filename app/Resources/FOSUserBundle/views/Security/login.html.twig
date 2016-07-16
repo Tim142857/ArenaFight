@@ -10,6 +10,9 @@
     <form action="{{ path("fos_user_security_check") }}" method="post">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
+        {# champs par defaut #}
+        <input type="hidden" id="argent" name="argent" value="0" />
+
         <fieldset class="form-group">
             <label for="username">{{ 'security.login.username'|trans }}</label>
             <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
@@ -22,6 +25,8 @@
         <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
         <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label><br/>
 
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-    </form>
+        <button type="submit" id="_submit" name="_submit" class="btn btn-primary">Submit</button>
+    </form><br/>
+
+    <a href="{{ url('fos_user_resetting_request') }}">Mot de passe oublié?</a>
 {% endblock fos_user_content %}

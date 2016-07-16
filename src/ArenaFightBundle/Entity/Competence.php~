@@ -36,14 +36,21 @@ class Competence {
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="ArenaFightBundle\Entity\Personnage", mappedBy="competence", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="ArenaFightBundle\Entity\Race", mappedBy="competence", cascade={"remove", "persist"})
      */
-    private $personnages;
+    private $races;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->races = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -94,44 +101,34 @@ class Competence {
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->personnages = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add personnage
+     * Add race
      *
-     * @param \ArenaFightBundle\Entity\Personnage $personnage
+     * @param \ArenaFightBundle\Entity\Race $race
      *
      * @return Competence
      */
-    public function addPersonnage(\ArenaFightBundle\Entity\Personnage $personnage)
-    {
-        $this->personnages[] = $personnage;
+    public function addRace(\ArenaFightBundle\Entity\Race $race) {
+        $this->races[] = $race;
 
         return $this;
     }
 
     /**
-     * Remove personnage
+     * Remove race
      *
-     * @param \ArenaFightBundle\Entity\Personnage $personnage
+     * @param \ArenaFightBundle\Entity\Race $race
      */
-    public function removePersonnage(\ArenaFightBundle\Entity\Personnage $personnage)
-    {
-        $this->personnages->removeElement($personnage);
+    public function removeRace(\ArenaFightBundle\Entity\Race $race) {
+        $this->races->removeElement($race);
     }
 
     /**
-     * Get personnages
+     * Get races
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPersonnages()
-    {
-        return $this->personnages;
+    public function getRaces() {
+        return $this->races;
     }
+
 }

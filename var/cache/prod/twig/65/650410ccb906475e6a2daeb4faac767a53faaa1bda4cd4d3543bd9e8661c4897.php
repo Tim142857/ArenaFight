@@ -28,7 +28,8 @@ class __TwigTemplate_6aa0201dff990ad5bb196021e4bdd7c22ed52a763cb3f9039a8d7c854a7
     public function block_body($context, array $blocks = array())
     {
         // line 3
-        echo "    Page Accueil
+        echo "
+
 ";
     }
 
@@ -49,6 +50,7 @@ class __TwigTemplate_6aa0201dff990ad5bb196021e4bdd7c22ed52a763cb3f9039a8d7c854a7
 }
 /* {% extends "ArenaFightBundle::Layout.html.twig" %}*/
 /* {% block body %}*/
-/*     Page Accueil*/
+/* */
+/* */
 /* {% endblock %}*/
 /* */

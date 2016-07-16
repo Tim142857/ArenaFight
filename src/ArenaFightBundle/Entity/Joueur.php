@@ -42,6 +42,11 @@ class Joueur extends BaseUser {
     private $personnages;
 
     /**
+     * @ORM\ManyToMany(targetEntity="ArenaFightBundle\Entity\Item", inversedBy="joueurs", cascade={"remove", "persist"})
+     */
+    private $items;
+
+    /**
      * Get id
      *
      * @return int
@@ -124,6 +129,37 @@ class Joueur extends BaseUser {
      */
     public function getPersonnages() {
         return $this->personnages;
+    }
+
+    /**
+     * Add item
+     *
+     * @param \ArenaFightBundle\Entity\Item $item
+     *
+     * @return Joueur
+     */
+    public function addItem(\ArenaFightBundle\Entity\Item $item) {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \ArenaFightBundle\Entity\Item $item
+     */
+    public function removeItem(\ArenaFightBundle\Entity\Item $item) {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems() {
+        return $this->items;
     }
 
 }

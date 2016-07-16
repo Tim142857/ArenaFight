@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="quete")
  * @ORM\Entity(repositoryClass="ArenaFightBundle\Repository\QueteRepository")
  */
-class Quete
-{
+class Quete {
+
     /**
      * @var int
      *
@@ -41,13 +41,6 @@ class Quete
      * @ORM\Column(name="argent", type="integer")
      */
     private $argent;
-    
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="pourcentageLoot", type="integer")
-     */
-    private $pourcentageLoot;
 
     /**
      * @var string
@@ -64,18 +57,16 @@ class Quete
     private $duree;
     
     /**
-     * @ORM\ManyToMany(targetEntity="ArenaFightBundle\Entity\Item", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ArenaFightBundle\Entity\LootItem", mappedBy="quete", cascade={"remove", "persist"})
      */
-    private $items;
-
+    private $lootitems;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -86,8 +77,7 @@ class Quete
      *
      * @return Quete
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -98,8 +88,7 @@ class Quete
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -110,8 +99,7 @@ class Quete
      *
      * @return Quete
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -122,8 +110,7 @@ class Quete
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -134,8 +121,7 @@ class Quete
      *
      * @return Quete
      */
-    public function setArgent($argent)
-    {
+    public function setArgent($argent) {
         $this->argent = $argent;
 
         return $this;
@@ -146,8 +132,7 @@ class Quete
      *
      * @return int
      */
-    public function getArgent()
-    {
+    public function getArgent() {
         return $this->argent;
     }
 
@@ -158,8 +143,7 @@ class Quete
      *
      * @return Quete
      */
-    public function setExperience($experience)
-    {
+    public function setExperience($experience) {
         $this->experience = $experience;
 
         return $this;
@@ -170,8 +154,7 @@ class Quete
      *
      * @return string
      */
-    public function getExperience()
-    {
+    public function getExperience() {
         return $this->experience;
     }
 
@@ -182,8 +165,7 @@ class Quete
      *
      * @return Quete
      */
-    public function setDuree($duree)
-    {
+    public function setDuree($duree) {
         $this->duree = $duree;
 
         return $this;
@@ -194,73 +176,49 @@ class Quete
      *
      * @return \DateTime
      */
-    public function getDuree()
-    {
+    public function getDuree() {
         return $this->duree;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lootitems = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Set pourcentageLoot
+     * Add lootitem
      *
-     * @param integer $pourcentageLoot
+     * @param \ArenaFightBundle\Entity\LootItem $lootitem
      *
      * @return Quete
      */
-    public function setPourcentageLoot($pourcentageLoot)
+    public function addLootitem(\ArenaFightBundle\Entity\LootItem $lootitem)
     {
-        $this->pourcentageLoot = $pourcentageLoot;
+        $this->lootitems[] = $lootitem;
 
         return $this;
     }
 
     /**
-     * Get pourcentageLoot
+     * Remove lootitem
      *
-     * @return integer
+     * @param \ArenaFightBundle\Entity\LootItem $lootitem
      */
-    public function getPourcentageLoot()
+    public function removeLootitem(\ArenaFightBundle\Entity\LootItem $lootitem)
     {
-        return $this->pourcentageLoot;
+        $this->lootitems->removeElement($lootitem);
     }
 
     /**
-     * Add item
-     *
-     * @param \ArenaFightBundle\Entity\Item $item
-     *
-     * @return Quete
-     */
-    public function addItem(\ArenaFightBundle\Entity\Item $item)
-    {
-        $this->items[] = $item;
-
-        return $this;
-    }
-
-    /**
-     * Remove item
-     *
-     * @param \ArenaFightBundle\Entity\Item $item
-     */
-    public function removeItem(\ArenaFightBundle\Entity\Item $item)
-    {
-        $this->items->removeElement($item);
-    }
-
-    /**
-     * Get items
+     * Get lootitems
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getItems()
+    public function getLootitems()
     {
-        return $this->items;
+        return $this->lootitems;
     }
 }

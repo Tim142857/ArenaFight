@@ -1,0 +1,39 @@
+{% extends "ArenaFightBundle:Joueur:Layout.html.twig" %}
+
+{% block body %}
+    <div class="col-md-12">
+        {% if messageUtilisateur is defined %}
+            <div class="alert alert-success">
+                {{ messageUtilisateur }}
+            </div>
+        {% endif %}
+
+        {% for quete in quetes %}
+            <form action="{{ url('joueur_envoi_quete') }}" method="post">
+                <input type="hidden" name="idQuete" value="{{ quete.getId() }}">
+                <h2>{{ quete.getNom() }}</h2>
+                <p>{{ quete.description }}</p>
+                <ul>
+                    <li>argent : {{ quete.getArgent() }}</li>
+                    <li>experience : {{ quete.getExperience() }}</li>
+                    <li>duree : {{ quete.getDuree()|date("H:i") }}</li>
+                </ul>
+                {% if persos|length>0 %}
+                    <fieldset class="form-group">
+                        <select name="idPerso" class="form-control">               
+                            {% for perso in persos %}
+                                <option value="{{ perso.getId() }}">{{ perso.getNom() }}</option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary">Envoyer en quête</button>
+                {% else %}
+                    <div class="alert alert-danger">
+                        Aucun personnage disponible
+                    </div>
+                {% endif %}
+            </form>
+        {% endfor %}
+    </div>
+{% endblock %}
+

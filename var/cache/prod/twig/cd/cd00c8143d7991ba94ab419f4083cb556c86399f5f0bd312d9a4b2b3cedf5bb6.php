@@ -35,45 +35,41 @@ class __TwigTemplate_a27df7ae477ec756827fb536771cce80a1277eeba020613dad7c6f90849
         // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/arenafight/style/bootstrap.min.css"), "html", null, true);
         echo "\">
+        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></script>
         <script src=\"";
-        // line 10
+        // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/arenafight/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
-        <title>";
-        // line 11
-        echo twig_escape_filter($this->env, (isset($context["title"]) ? $context["title"] : null), "html", null, true);
-        echo "</title>
+        <title>Tire page</title>
     </head>
     <body>
         <div class=\"container\">
             <header>
-                <div class=\"container\">
+                <div class=\"container banniere\">
                 </div>
-
-                <nav class=\"navbar navbar-default menuHorizontal\">
-                    <div class=\"container\">
-                        <div class=\"row\">
-                            <div class=\"col-md-10 col-md-offset-2 col-xs-12\">
-                                <ul class=\"nav navbar-nav\">
-                                    <li id=\"\"><a href=\"\">ACCUEIL</a></li>
-                                    <li id=\"\"><a href=\"\">PERSONNAGES</a></li>
-                                    <li id=\"\"><a href=\"\">COMBATS</a></li>
-                                    <li id=\"\"><a href=\"\">CLASSEMENTS</a></li>
-                                    <li id=\"\"><a href=\"\">BOUTIQUE</a></li>
-                                    <li id=\"\"><a href=\"\">SUPPORT</a></li>
-                                </ul>
-                            </div>
-
+                <div class=\"container\">
+                    <nav class=\"navbar navbar-default menu\">
+                        <div class=\"container\">
+                            <ul class=\"nav navbar-nav\">
+                                <li id=\"\"><a href=\"\">ACCUEIL</a></li>
+                                <li id=\"\"><a href=\"\">PERSONNAGES</a></li>
+                                <li id=\"\"><a href=\"\">INVENTAIRE</a></li>
+                                <li id=\"\"><a href=\"\">QUETE</a></li>
+                                <li id=\"\"><a href=\"\">COMBATS</a></li>
+                                <li id=\"\"><a href=\"\">CLASSEMENTS</a></li>
+                                <li id=\"\"><a href=\"\">BOUTIQUE</a></li>
+                                <li id=\"\"><a href=\"\">SUPPORT</a></li>
+                            </ul>
                         </div>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
             </header>
 
-            <div class=\"container\">
+            <div class=\"container corps\">
                 ";
-        // line 39
+        // line 38
         $this->displayBlock('body', $context, $blocks);
-        // line 41
+        // line 40
         echo "            </div>
         </div>
     </body>
@@ -84,10 +80,10 @@ class __TwigTemplate_a27df7ae477ec756827fb536771cce80a1277eeba020613dad7c6f90849
 ";
     }
 
-    // line 39
+    // line 38
     public function block_body($context, array $blocks = array())
     {
-        // line 40
+        // line 39
         echo "                ";
     }
 
@@ -103,7 +99,7 @@ class __TwigTemplate_a27df7ae477ec756827fb536771cce80a1277eeba020613dad7c6f90849
 
     public function getDebugInfo()
     {
-        return array (  91 => 40,  88 => 39,  77 => 41,  75 => 39,  44 => 11,  40 => 10,  36 => 9,  32 => 8,  28 => 7,  20 => 1,);
+        return array (  87 => 39,  84 => 38,  73 => 40,  71 => 38,  41 => 11,  36 => 9,  32 => 8,  28 => 7,  20 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -115,35 +111,34 @@ class __TwigTemplate_a27df7ae477ec756827fb536771cce80a1277eeba020613dad7c6f90849
 /*         <link rel="icon" href="{{ asset('bundles/notaire/images/favicon.ico') }}">*/
 /*         <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/style.css') }}">*/
 /*         <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/bootstrap.min.css') }}">*/
+/*         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*/
 /*         <script src="{{ asset('bundles/arenafight/js/bootstrap.min.js') }}"></script>*/
-/*         <title>{{ title }}</title>*/
+/*         <title>Tire page</title>*/
 /*     </head>*/
 /*     <body>*/
 /*         <div class="container">*/
 /*             <header>*/
-/*                 <div class="container">*/
+/*                 <div class="container banniere">*/
 /*                 </div>*/
-/* */
-/*                 <nav class="navbar navbar-default menuHorizontal">*/
-/*                     <div class="container">*/
-/*                         <div class="row">*/
-/*                             <div class="col-md-10 col-md-offset-2 col-xs-12">*/
-/*                                 <ul class="nav navbar-nav">*/
-/*                                     <li id=""><a href="">ACCUEIL</a></li>*/
-/*                                     <li id=""><a href="">PERSONNAGES</a></li>*/
-/*                                     <li id=""><a href="">COMBATS</a></li>*/
-/*                                     <li id=""><a href="">CLASSEMENTS</a></li>*/
-/*                                     <li id=""><a href="">BOUTIQUE</a></li>*/
-/*                                     <li id=""><a href="">SUPPORT</a></li>*/
-/*                                 </ul>*/
-/*                             </div>*/
-/* */
+/*                 <div class="container">*/
+/*                     <nav class="navbar navbar-default menu">*/
+/*                         <div class="container">*/
+/*                             <ul class="nav navbar-nav">*/
+/*                                 <li id=""><a href="">ACCUEIL</a></li>*/
+/*                                 <li id=""><a href="">PERSONNAGES</a></li>*/
+/*                                 <li id=""><a href="">INVENTAIRE</a></li>*/
+/*                                 <li id=""><a href="">QUETE</a></li>*/
+/*                                 <li id=""><a href="">COMBATS</a></li>*/
+/*                                 <li id=""><a href="">CLASSEMENTS</a></li>*/
+/*                                 <li id=""><a href="">BOUTIQUE</a></li>*/
+/*                                 <li id=""><a href="">SUPPORT</a></li>*/
+/*                             </ul>*/
 /*                         </div>*/
-/*                     </div>*/
-/*                 </nav>*/
+/*                     </nav>*/
+/*                 </div>*/
 /*             </header>*/
 /* */
-/*             <div class="container">*/
+/*             <div class="container corps">*/
 /*                 {% block body %}*/
 /*                 {% endblock %}*/
 /*             </div>*/

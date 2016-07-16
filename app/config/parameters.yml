@@ -2,11 +2,11 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: arenafight1.1
+    database_name: arenafightbeta
     database_user: root
     database_password: null
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_user: arenafightrequest@gmail.com
+    mailer_password: #Gmail142857
     secret: 543e245bd276c4619b26bdd777bc63db9432ccd6

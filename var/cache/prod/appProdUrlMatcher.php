@@ -27,13 +27,33 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
-        // arena_fight_homepage
+        // accueil_visitor
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'arena_fight_homepage');
+                return $this->redirect($pathinfo.'/', 'accueil_visitor');
             }
 
-            return array (  '_controller' => 'ArenaFightBundle\\Controller\\DefaultController::indexAction',  '_route' => 'arena_fight_homepage',);
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::indexAction',  '_route' => 'accueil_visitor',);
+        }
+
+        // joueur_quetes
+        if ($pathinfo === '/quetes') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::indexQuetesAction',  '_route' => 'joueur_quetes',);
+        }
+
+        // joueur_envoi_quete
+        if ($pathinfo === '/envoiQuete') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::envoiQueteAction',  '_route' => 'joueur_envoi_quete',);
+        }
+
+        // joueur_accueil_persos
+        if ($pathinfo === '/personnages') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::accueilPersosAction',  '_route' => 'joueur_accueil_persos',);
+        }
+
+        // joueur_ajouter_perso
+        if ($pathinfo === '/ajouter-personnage') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::ajouterPersoAction',  '_route' => 'joueur_ajouter_perso',);
         }
 
         // homepage

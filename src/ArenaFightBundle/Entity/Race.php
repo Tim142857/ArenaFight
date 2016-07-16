@@ -52,6 +52,13 @@ class Race {
     /**
      * @var int
      *
+     * @ORM\Column(name="vieMax", type="integer")
+     */
+    private $vieMax;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="vitesse", type="integer")
      */
     private $vitesse;
@@ -94,6 +101,17 @@ class Race {
      *
      * @return int
      */
+
+    /**
+     * @var \Competence
+     *
+     * @ORM\ManyToOne(targetEntity="Competence", inversedBy="races")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="competence", referencedColumnName="id")
+     * })
+     */
+    private $competence;
+
     public function getId() {
         return $this->id;
     }
@@ -299,8 +317,7 @@ class Race {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->personnages = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -311,8 +328,7 @@ class Race {
      *
      * @return Race
      */
-    public function addPersonnage(\ArenaFightBundle\Entity\Personnage $personnage)
-    {
+    public function addPersonnage(\ArenaFightBundle\Entity\Personnage $personnage) {
         $this->personnages[] = $personnage;
 
         return $this;
@@ -323,8 +339,7 @@ class Race {
      *
      * @param \ArenaFightBundle\Entity\Personnage $personnage
      */
-    public function removePersonnage(\ArenaFightBundle\Entity\Personnage $personnage)
-    {
+    public function removePersonnage(\ArenaFightBundle\Entity\Personnage $personnage) {
         $this->personnages->removeElement($personnage);
     }
 
@@ -333,8 +348,54 @@ class Race {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPersonnages()
-    {
+    public function getPersonnages() {
         return $this->personnages;
+    }
+
+    /**
+     * Set vieMax
+     *
+     * @param integer $vieMax
+     *
+     * @return Race
+     */
+    public function setVieMax($vieMax) {
+        $this->vieMax = $vieMax;
+
+        return $this;
+    }
+
+    /**
+     * Get vieMax
+     *
+     * @return integer
+     */
+    public function getVieMax() {
+        return $this->vieMax;
+    }
+
+
+    /**
+     * Set competence
+     *
+     * @param \ArenaFightBundle\Entity\Competence $competence
+     *
+     * @return Race
+     */
+    public function setCompetence(\ArenaFightBundle\Entity\Competence $competence = null)
+    {
+        $this->competence = $competence;
+
+        return $this;
+    }
+
+    /**
+     * Get competence
+     *
+     * @return \ArenaFightBundle\Entity\Competence
+     */
+    public function getCompetence()
+    {
+        return $this->competence;
     }
 }

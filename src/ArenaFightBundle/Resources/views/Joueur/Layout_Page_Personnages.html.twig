@@ -1,0 +1,16 @@
+{% extends "ArenaFightBundle:Joueur:Layout.html.twig" %}
+{% block body %}
+    <div class="row">
+        <div class=" col-md-3 menu-personnage">
+            <ul>
+                <li><a href="">Supprimer ce perso</a></li>
+                <li><a href="">Equiper ce perso</a></li>
+                <li><a href="">Renommer ce perso</a></li>
+                <li><a href="{{ url('joueur_ajouter_perso') }}">Ajouter un perso</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            {% block bodyPerso %}
+            {% endblock %}
+        </div>
+    {% endblock %}

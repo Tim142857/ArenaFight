@@ -38,6 +38,20 @@ class Personnage {
     /**
      * @var int
      *
+     * @ORM\Column(name="vie", type="integer")
+     */
+    private $vie;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="vieMax", type="integer")
+     */
+    private $vieMax;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="experience", type="integer")
      */
     private $experience;
@@ -80,9 +94,23 @@ class Personnage {
     /**
      * @var int
      *
+     * @ORM\Column(name="vitesseTotale", type="integer")
+     */
+    private $vitesseTotale;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="vitesseAttaque", type="integer")
      */
     private $vitesseAttaque;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="vitesseAttaqueTotale", type="integer")
+     */
+    private $vitesseAttaqueTotale;
 
     /**
      * @var int
@@ -94,6 +122,13 @@ class Personnage {
     /**
      * @var int
      *
+     * @ORM\Column(name="esquiveTotale", type="integer")
+     */
+    private $esquiveTotale;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="degatsCritique", type="integer")
      */
     private $degatsCritique;
@@ -101,9 +136,23 @@ class Personnage {
     /**
      * @var int
      *
+     * @ORM\Column(name="degatsCritiqueTotal", type="integer")
+     */
+    private $degatsCritiqueTotal;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="chanceCritique", type="integer")
      */
     private $chanceCritique;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="chanceCritiqueTotale", type="integer")
+     */
+    private $chanceCritiqueTotale;
 
     /**
      * @var string
@@ -135,16 +184,6 @@ class Personnage {
      * })
      */
     private $race;
-
-    /**
-     * @var \Competence
-     *
-     * @ORM\ManyToOne(targetEntity="Competence", inversedBy="personnages")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="competence", referencedColumnName="id")
-     * })
-     */
-    private $competence;
 
     /**
      * @var \Joueur
@@ -522,7 +561,6 @@ class Personnage {
         return $this->joueur;
     }
 
-
     /**
      * Get race
      *
@@ -546,37 +584,13 @@ class Personnage {
     }
 
     /**
-     * Set competence
-     *
-     * @param \ArenaFightBundle\Entity\Competence $competence
-     *
-     * @return Personnage
-     */
-    public function setCompetence(\ArenaFightBundle\Entity\Competence $competence = null) {
-        $this->competence = $competence;
-
-        return $this;
-    }
-
-    /**
-     * Get competence
-     *
-     * @return \ArenaFightBundle\Entity\Competence
-     */
-    public function getCompetence() {
-        return $this->competence;
-    }
-
-
-    /**
      * Add item
      *
      * @param \ArenaFightBundle\Entity\Item $item
      *
      * @return Personnage
      */
-    public function addItem(\ArenaFightBundle\Entity\Item $item)
-    {
+    public function addItem(\ArenaFightBundle\Entity\Item $item) {
         $this->items[] = $item;
 
         return $this;
@@ -587,8 +601,7 @@ class Personnage {
      *
      * @param \ArenaFightBundle\Entity\Item $item
      */
-    public function removeItem(\ArenaFightBundle\Entity\Item $item)
-    {
+    public function removeItem(\ArenaFightBundle\Entity\Item $item) {
         $this->items->removeElement($item);
     }
 
@@ -597,16 +610,169 @@ class Personnage {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getItems()
-    {
+    public function getItems() {
         return $this->items;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set vie
+     *
+     * @param integer $vie
+     *
+     * @return Personnage
+     */
+    public function setVie($vie) {
+        $this->vie = $vie;
+
+        return $this;
+    }
+
+    /**
+     * Get vie
+     *
+     * @return integer
+     */
+    public function getVie() {
+        return $this->vie;
+    }
+
+    /**
+     * Set vieMax
+     *
+     * @param integer $vieMax
+     *
+     * @return Personnage
+     */
+    public function setVieMax($vieMax) {
+        $this->vieMax = $vieMax;
+
+        return $this;
+    }
+
+    /**
+     * Get vieMax
+     *
+     * @return integer
+     */
+    public function getVieMax() {
+        return $this->vieMax;
+    }
+
+    /**
+     * Set vitesseTotale
+     *
+     * @param integer $vitesseTotale
+     *
+     * @return Personnage
+     */
+    public function setVitesseTotale($vitesseTotale) {
+        $this->vitesseTotale = $vitesseTotale;
+
+        return $this;
+    }
+
+    /**
+     * Get vitesseTotale
+     *
+     * @return integer
+     */
+    public function getVitesseTotale() {
+        return $this->vitesseTotale;
+    }
+
+    /**
+     * Set vitesseAttaqueTotale
+     *
+     * @param integer $vitesseAttaqueTotale
+     *
+     * @return Personnage
+     */
+    public function setVitesseAttaqueTotale($vitesseAttaqueTotale) {
+        $this->vitesseAttaqueTotale = $vitesseAttaqueTotale;
+
+        return $this;
+    }
+
+    /**
+     * Get vitesseAttaqueTotale
+     *
+     * @return integer
+     */
+    public function getVitesseAttaqueTotale() {
+        return $this->vitesseAttaqueTotale;
+    }
+
+    /**
+     * Set esquiveTotale
+     *
+     * @param integer $esquiveTotale
+     *
+     * @return Personnage
+     */
+    public function setEsquiveTotale($esquiveTotale) {
+        $this->esquiveTotale = $esquiveTotale;
+
+        return $this;
+    }
+
+    /**
+     * Get esquiveTotale
+     *
+     * @return integer
+     */
+    public function getEsquiveTotale() {
+        return $this->esquiveTotale;
+    }
+
+    /**
+     * Set degatsCritiqueTotal
+     *
+     * @param integer $degatsCritiqueTotal
+     *
+     * @return Personnage
+     */
+    public function setDegatsCritiqueTotal($degatsCritiqueTotal) {
+        $this->degatsCritiqueTotal = $degatsCritiqueTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get degatsCritiqueTotal
+     *
+     * @return integer
+     */
+    public function getDegatsCritiqueTotal() {
+        return $this->degatsCritiqueTotal;
+    }
+
+    /**
+     * Set chanceCritiqueTotale
+     *
+     * @param integer $chanceCritiqueTotale
+     *
+     * @return Personnage
+     */
+    public function setChanceCritiqueTotale($chanceCritiqueTotale) {
+        $this->chanceCritiqueTotale = $chanceCritiqueTotale;
+
+        return $this;
+    }
+
+    /**
+     * Get chanceCritiqueTotale
+     *
+     * @return integer
+     */
+    public function getChanceCritiqueTotale() {
+        return $this->chanceCritiqueTotale;
     }
 
 }

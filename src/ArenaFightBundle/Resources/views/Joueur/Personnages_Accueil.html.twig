@@ -1,0 +1,15 @@
+{% extends "ArenaFightBundle:Joueur:Layout_Page_Personnages.html.twig" %}
+{% block bodyPerso %}
+    {% for perso in persos %}
+        <p>
+        <h2>Nom: {{ perso.getNom() }}</h2><br/>
+        Race: {{ perso.getRace.getNom() }}<br/>
+        Vie: {{ perso.getVie() }}<br/>
+        Attaque: {{ perso.getAttaque() }}<br/>
+        Equipements:
+        {% for item in perso.getItems() %}
+            Nom item: {{ item.getNom() }} 
+        {% endfor %}
+    </p>
+{% endfor %}
+{% endblock %}

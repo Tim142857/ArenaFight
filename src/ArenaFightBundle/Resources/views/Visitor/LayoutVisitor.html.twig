@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ asset('bundles/notaire/images/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/bootstrap.min.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="{{ asset('bundles/arenafight/js/bootstrap.min.js') }}"></script>
+        <title><title>Titre de la page</title></title>
+    </head>
+    <body>
+        <div class="container">
+
+            <header>
+                <div class="container banniere">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-default menu menu-visitor">
+                            <div class="container">
+                                <ul class="nav navbar-nav">
+                                    <li id=""><a href="{{ url('accueil_visitor') }}">ACCUEIL</a></li>
+                                    <li id=""><a href="">SCREENSHOTS</a></li>
+                                    <li id=""><a href="">SUPPORT</a></li>
+                                    <li id=""><a href="{{ url('fos_user_security_login') }}">SE CONNECTER</a></li>
+                                    <li id=""><a href="{{ url('fos_user_registration_register') }}">CREER UN COMPTE</a></li>
+                                </ul>
+
+                            </div>
+                        </nav>
+                    </div> 
+                </div>
+            </header>
+        </div>
+
+        <div class="container corps">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
+
+
+

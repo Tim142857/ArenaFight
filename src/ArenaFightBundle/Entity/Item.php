@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="ArenaFightBundle\Repository\ItemRepository")
  */
-class Item
-{
+class Item {
+
     /**
      * @var int
      *
@@ -38,28 +38,28 @@ class Item
     /**
      * @var int
      *
-     * @ORM\Column(name="degats", type="integer")
+     * @ORM\Column(name="degats", type="integer", nullable=true)
      */
     private $degats;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="reductionDegats", type="integer")
+     * @ORM\Column(name="reductionDegats", type="integer", nullable=true)
      */
     private $reductionDegats;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="vitesse", type="integer")
+     * @ORM\Column(name="vitesse", type="integer", nullable=true)
      */
     private $vitesse;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="regen", type="integer")
+     * @ORM\Column(name="regen", type="integer", nullable=true)
      */
     private $regen;
 
@@ -76,7 +76,7 @@ class Item
      * @ORM\Column(name="levelMini", type="integer")
      */
     private $levelMini;
-    
+
     /**
      * @var \TypeItem
      *
@@ -86,16 +86,18 @@ class Item
      * })
      */
     private $typeItem;
-    
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ArenaFightBundle\Entity\Joueur", mappedBy="items", cascade={"remove", "persist"})
+     */
+    private $joueurs;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -106,8 +108,7 @@ class Item
      *
      * @return Item
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -118,8 +119,7 @@ class Item
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -130,8 +130,7 @@ class Item
      *
      * @return Item
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -142,8 +141,7 @@ class Item
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -154,8 +152,7 @@ class Item
      *
      * @return Item
      */
-    public function setDegats($degats)
-    {
+    public function setDegats($degats) {
         $this->degats = $degats;
 
         return $this;
@@ -166,8 +163,7 @@ class Item
      *
      * @return int
      */
-    public function getDegats()
-    {
+    public function getDegats() {
         return $this->degats;
     }
 
@@ -178,8 +174,7 @@ class Item
      *
      * @return Item
      */
-    public function setReductionDegats($reductionDegats)
-    {
+    public function setReductionDegats($reductionDegats) {
         $this->reductionDegats = $reductionDegats;
 
         return $this;
@@ -190,8 +185,7 @@ class Item
      *
      * @return string
      */
-    public function getReductionDegats()
-    {
+    public function getReductionDegats() {
         return $this->reductionDegats;
     }
 
@@ -202,8 +196,7 @@ class Item
      *
      * @return Item
      */
-    public function setVitesse($vitesse)
-    {
+    public function setVitesse($vitesse) {
         $this->vitesse = $vitesse;
 
         return $this;
@@ -214,8 +207,7 @@ class Item
      *
      * @return int
      */
-    public function getVitesse()
-    {
+    public function getVitesse() {
         return $this->vitesse;
     }
 
@@ -226,8 +218,7 @@ class Item
      *
      * @return Item
      */
-    public function setRegen($regen)
-    {
+    public function setRegen($regen) {
         $this->regen = $regen;
 
         return $this;
@@ -238,8 +229,7 @@ class Item
      *
      * @return string
      */
-    public function getRegen()
-    {
+    public function getRegen() {
         return $this->regen;
     }
 
@@ -250,8 +240,7 @@ class Item
      *
      * @return Item
      */
-    public function setPrix($prix)
-    {
+    public function setPrix($prix) {
         $this->prix = $prix;
 
         return $this;
@@ -262,8 +251,7 @@ class Item
      *
      * @return int
      */
-    public function getPrix()
-    {
+    public function getPrix() {
         return $this->prix;
     }
 
@@ -274,8 +262,7 @@ class Item
      *
      * @return Item
      */
-    public function setLevelMini($levelMini)
-    {
+    public function setLevelMini($levelMini) {
         $this->levelMini = $levelMini;
 
         return $this;
@@ -286,8 +273,7 @@ class Item
      *
      * @return int
      */
-    public function getLevelMini()
-    {
+    public function getLevelMini() {
         return $this->levelMini;
     }
 
@@ -298,8 +284,7 @@ class Item
      *
      * @return Item
      */
-    public function setTypeItem(\ArenaFightBundle\Entity\TypeItem $typeItem = null)
-    {
+    public function setTypeItem(\ArenaFightBundle\Entity\TypeItem $typeItem = null) {
         $this->typeItem = $typeItem;
 
         return $this;
@@ -310,8 +295,56 @@ class Item
      *
      * @return \ArenaFightBundle\Entity\TypeItem
      */
-    public function getTypeItem()
-    {
+    public function getTypeItem() {
         return $this->typeItem;
     }
+
+    /**
+     * Get lootitems
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLootitems() {
+        return $this->lootitems;
+    }
+
+    /**
+     * Add joueur
+     *
+     * @param \ArenaFightBundle\Entity\Joueur $joueur
+     *
+     * @return Item
+     */
+    public function addJoueur(\ArenaFightBundle\Entity\Joueur $joueur) {
+        $this->joueurs[] = $joueur;
+
+        return $this;
+    }
+
+    /**
+     * Remove joueur
+     *
+     * @param \ArenaFightBundle\Entity\Joueur $joueur
+     */
+    public function removeJoueur(\ArenaFightBundle\Entity\Joueur $joueur) {
+        $this->joueurs->removeElement($joueur);
+    }
+
+    /**
+     * Get joueurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJoueurs() {
+        return $this->joueurs;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->joueurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }
