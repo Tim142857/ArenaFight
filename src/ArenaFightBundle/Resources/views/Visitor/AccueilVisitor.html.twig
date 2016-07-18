@@ -1,5 +1,75 @@
-{% extends "ArenaFightBundle:Visitor:LayoutVisitor.html.twig" %}
+{% extends "ArenaFightBundle:Visitor:LayoutVisitor.html.twig" %} 
 {% block body %}
+    <div class="container-fluid">
+        <div id="mySidenav" class="sidenav">
+            <section class="stats">
+                <ul style="margin-top: 150px; line-height: 50px; font-size: 1.5em;">
+                    <li><a href="#">Statistiques</a></li>
+                    <li><a href="#">A propos</a></li>
+                </ul>
+            </section>
+        </div>
+        <ul class="cb-slideshow" style="z-index: -999999999999 !important;">
+            <li><span>Image 01</span>
+                <div>
+                    <h3>EXEMPLE :P</h3></div>
+            </li>
+            <li><span>Image 02</span>
+                <div>
+                    <h3>EXEMPLE 2</h3></div>
+            </li>
+            <li><span>Image 03</span>
+                <div>
+                    <h3>EXEMPLE 3</h3></div>
+            </li>
+            <li><span>Image 04</span>
+                <div>
+                    <h3>EXEMPLE 4</h3></div>
+            </li>
+            <li><span>Image 05</span>
+                <div>
+                    <h3>EXEMPLE 5</h3></div>
+            </li>
+            <li><span>Image 06</span>
+                <div>
+                    <h3>EXEMPLE 6</h3></div>
+            </li>
+        </ul>
+        <div class='icon-scroll'><div/>
+
+            <h1 class="titre">Bienvenue sur Arena Fight</h1>
+
+        </div>
+
+        <!--Insertion librairies jQuery -->
+        <script src="{{ asset('http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') }}"></script>
+        <!-- jQuery UI -->
+        <link rel="stylesheet" href="{{ asset('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css') }}">
+        <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js') }}"></script>
+        <!-- Script pour button -->
+        <script>
+            $(document).ready(function () {
+
+                var $toggleButton = $('.toggle-button');
+
+                // Hamburger button
+                $toggleButton.on('click', function () {
+                    $(this).toggleClass('button-open');
+                });
+            });
+        </script>
+        <!--Animation volet jQuery -->
+        <script>
+            $(document).ready(function () {
+                $('.stats').hide();
+                $('.toggle-button').on('click', function () {
+                    $('.stats').slideToggle('left');
 
 
-{% endblock %}
+                });
+            });
+        </script>
+        <!--Script slideout.js -->
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.11/slideout.min.js') }}"></script>
+
+    {% endblock %}

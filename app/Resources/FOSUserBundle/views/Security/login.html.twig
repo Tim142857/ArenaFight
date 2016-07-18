@@ -10,9 +10,6 @@
     <form action="{{ path("fos_user_security_check") }}" method="post">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-        {# champs par defaut #}
-        <input type="hidden" id="argent" name="argent" value="0" />
-
         <fieldset class="form-group">
             <label for="username">{{ 'security.login.username'|trans }}</label>
             <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />

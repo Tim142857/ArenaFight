@@ -5,6 +5,7 @@ namespace ArenaFightBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ArenaFightBundle\Form\AddPersoType;
+use ArenaFightBundle\Form\DeletePersoType;
 use ArenaFightBundle\Entity\Personnage;
 use ArenaFightBundle\Entity\Race;
 
@@ -21,6 +22,12 @@ class JoueurController extends Controller {
         } else {
             return $this->render('ArenaFightBundle:Joueur:Accueil.html.twig', array('title' => 'Accueil'));
         }
+    }
+
+    public function profilAction() {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('ArenaFightBundle:Joueur:Joueur_Profil.html.twig', array('joueur' => $user));
     }
 
     public function indexQuetesAction() {
@@ -108,6 +115,120 @@ class JoueurController extends Controller {
         }
 
         return $this->render('ArenaFightBundle:Joueur:Personnages_Ajouter.html.twig', array('form' => $form->createView()));
+    }
+
+    public function vueSupprimerPersoAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $repoPerso = $em->getRepository('ArenaFightBundle:Personnage');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $persos = $repoPerso->findByJoueur($user);
+
+        return $this->render('ArenaFightBundle:Joueur:Personnages_Supprimer.html.twig', array('persos' => $persos));
+    }
+
+    public function supprimerPersoAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $repoPerso = $em->getRepository('ArenaFightBundle:Personnage');
+        $idPerso = $request->get('idPerso');
+        $persoASupprimer = $repoPerso->findOneById($idPerso);
+        $em->remove($persoASupprimer);
+        $em->flush();
+
+        return $this->redirectToRoute('joueur_accueil_persos');
+    }
+
+    public function equiperPersoAction($persoActuel) {
+        $em = $this->getDoctrine()->getManager();
+        $repoItem = $em->getRepository('ArenaFightBundle:Item');
+        $itemAEquiper = $repoItem->findOneById(1);
+        var_dump($itemAEquiper);
+
+        $repoPerso = $em->getRepository('ArenaFightBundle:Personnage');
+        $perso = $repoPerso->findOneById(4);
+        var_dump($perso);
+
+
+        $perso->addItem($itemAEquiper);
+        $em->persist($perso);
+        $em->flush();
+
+        return $this->redirectToRoute('joueur_accueil_persos');
+    }
+
+    public function desequiperPersoAction($persoActuel) {
+
+        $em = $this->getDoctrine()->getManager();
+        $repoItem = $em->getRepository('ArenaFightBundle:Item');
+        $itemAEquiper = $repoItem->findOneById(1);
+        var_dump($itemAEquiper);
+
+        $repoPerso = $em->getRepository('ArenaFightBundle:Personnage');
+        $perso = $repoPerso->findOneById(4);
+        var_dump($perso);
+
+
+        $perso->removeItem($itemAEquiper);
+        $em->persist($perso);
+        $em->flush();
+
+        return $this->redirectToRoute('joueur_accueil_persos');
+    }
+
+    public function gainExp($persoActuel) {
+        
+    }
+
+    public function levelUp($persoActuel) {
+        
+    }
+
+    public function attaquer(Personnage $persoAttaque) {
+        
+    }
+
+    public function ultime(Personnage $persoAttaque = null) {
+        
+    }
+
+    public function acheterItem($idItemAchete) {
+        $em = $this->getDoctrine()->getManager();
+        $repoItem = $em->getRepository('ArenaFightBundle:Item');
+        $itemAchete = $repoItem->findOneById($idItemAchete);
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $messageUser = "";
+        $argentActuel = $user->getArgent();
+        if ($argentActuel >= $itemAchete->getPrix()) {
+            $user->setArgent($argentActuel - $itemAchete->getPrix());
+            $user->addItem($itemAchete);
+            $em->persist($user);
+            $em->flush();
+            $messageUser = "item acheté";
+        } else if ($argentActuel < $itemAchete->getPrix()) {
+            $messageUser = "Vous n'avez pas assez d'argent";
+        } else {
+            $messageUser = "Il y a eu un problème pendant la vente, veuillez réessayer plus tard";
+        }
+    }
+
+    public function vendreItem($idItemAVendre) {
+        $em = $this->getDoctrine()->getManager();
+        $repoItem = $em->getRepository('ArenaFightBundle:Item');
+        $itemAVendre = $repoItem->findOneById($itemAVendre);
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $messageUser = "";
+        $argentActuel = $user->getArgent();
+        try {
+            $user->setArgent($argentActuel + $itemAchete->getPrix());
+            $user->removeItem($itemAchete);
+            $messageUser = "item vendu";
+            $em->persist($user);
+            $em->flush();
+        } catch (Exception $ex) {
+            
+        }
     }
 
 }

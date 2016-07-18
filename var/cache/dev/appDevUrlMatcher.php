@@ -109,6 +109,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::indexAction',  '_route' => 'accueil_visitor',);
         }
 
+        // joueur_profil
+        if ($pathinfo === '/profil') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::profilAction',  '_route' => 'joueur_profil',);
+        }
+
         // joueur_quetes
         if ($pathinfo === '/quetes') {
             return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::indexQuetesAction',  '_route' => 'joueur_quetes',);
@@ -127,6 +132,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // joueur_ajouter_perso
         if ($pathinfo === '/ajouter-personnage') {
             return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::ajouterPersoAction',  '_route' => 'joueur_ajouter_perso',);
+        }
+
+        if (0 === strpos($pathinfo, '/s')) {
+            // joueur_vue_supprimer_perso
+            if ($pathinfo === '/selection-personnage-a-supprimer') {
+                return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::vueSupprimerPersoAction',  '_route' => 'joueur_vue_supprimer_perso',);
+            }
+
+            // joueur_supprimer_perso
+            if ($pathinfo === '/supprimer-personnage') {
+                return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::supprimerPersoAction',  '_route' => 'joueur_supprimer_perso',);
+            }
+
+        }
+
+        // joueur_equiper_perso
+        if ($pathinfo === '/equiper-personnage') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::equiperPersoAction',  '_route' => 'joueur_equiper_perso',);
+        }
+
+        // joueur_desequiper_perso
+        if ($pathinfo === '/desequiper-personnage') {
+            return array (  '_controller' => 'ArenaFightBundle\\Controller\\JoueurController::desequiperPersoAction',  '_route' => 'joueur_desequiper_perso',);
         }
 
         // homepage

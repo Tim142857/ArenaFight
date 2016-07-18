@@ -17,8 +17,8 @@ class AddPersoType extends AbstractType {
                 ))
                 ->add('race', EntityType::class, array(
                     'class' => 'ArenaFightBundle:Race',
-                    'choice_label' => function ($category) {
-                        return $category->getNom();
+                    'choice_label' => function ($race) {
+                        return $race->getNom();
                     },
                     'attr' => array('class' => 'form-control')))
                 ->add('submit', SubmitType::class, array(

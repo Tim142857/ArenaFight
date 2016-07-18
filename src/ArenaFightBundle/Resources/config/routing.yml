@@ -1,6 +1,9 @@
 accueil_visitor:
     path:     /
     defaults: { _controller: ArenaFightBundle:Joueur:index }
+joueur_profil:
+    path:     /profil
+    defaults: { _controller: ArenaFightBundle:Joueur:profil }     
 joueur_quetes:
     path:     /quetes
     defaults: { _controller: ArenaFightBundle:Joueur:indexQuetes }
@@ -12,4 +15,16 @@ joueur_accueil_persos:
     defaults: { _controller: ArenaFightBundle:Joueur:accueilPersos }
 joueur_ajouter_perso:
     path:     /ajouter-personnage
-    defaults: { _controller: ArenaFightBundle:Joueur:ajouterPerso }    
+    defaults: { _controller: ArenaFightBundle:Joueur:ajouterPerso }
+joueur_vue_supprimer_perso:
+    path:     /selection-personnage-a-supprimer
+    defaults: { _controller: ArenaFightBundle:Joueur:vueSupprimerPerso }
+joueur_supprimer_perso:
+    path:     /supprimer-personnage
+    defaults: { _controller: ArenaFightBundle:Joueur:supprimerPerso }
+joueur_equiper_perso:
+    path:     /equiper-personnage
+    defaults: { _controller: ArenaFightBundle:Joueur:equiperPerso }
+joueur_desequiper_perso:
+    path:     /desequiper-personnage
+    defaults: { _controller: ArenaFightBundle:Joueur:desequiperPerso }    

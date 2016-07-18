@@ -1,0 +1,9 @@
+{% extends "ArenaFightBundle:Joueur:Layout.html.twig" %}
+{% block body %}
+
+    <h2>{{ joueur.getUsername() }}</h2>
+
+    <p>argent:{{ joueur.getArgent() }}</p>
+    <p>nb de persos:{{ joueur.getPersonnages()|length }}</p>
+
+{% endblock %}
