@@ -17,8 +17,8 @@ class __TwigTemplate_8a38a5e78d539d6b55ab6efee5684c07011885e5bdb075f820ac25522c0
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b7eed60a0834744c8b6d9a94d6fe07e64f2a986cc41fb48b2cb0866d578d9828 = $this->env->getExtension("native_profiler");
-        $__internal_b7eed60a0834744c8b6d9a94d6fe07e64f2a986cc41fb48b2cb0866d578d9828->enter($__internal_b7eed60a0834744c8b6d9a94d6fe07e64f2a986cc41fb48b2cb0866d578d9828_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ArenaFightBundle:Visitor:LayoutVisitor.html.twig"));
+        $__internal_700a4e104d5ae0e78a4501289416d5a33fe4aa5a55000487ccaf74584742c592 = $this->env->getExtension("native_profiler");
+        $__internal_700a4e104d5ae0e78a4501289416d5a33fe4aa5a55000487ccaf74584742c592->enter($__internal_700a4e104d5ae0e78a4501289416d5a33fe4aa5a55000487ccaf74584742c592_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ArenaFightBundle:Visitor:LayoutVisitor.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -114,43 +114,72 @@ class __TwigTemplate_8a38a5e78d539d6b55ab6efee5684c07011885e5bdb075f820ac25522c0
     </header>
 
     <body>
+        <div id=\"mySidenav\" class=\"sidenav\">
+            <section class=\"stats\">
+                <ul style=\"margin-top: 150px; line-height: 50px; font-size: 1.5em;\">
+                    <li><a href=\"#\">Statistiques</a></li>
+                    <li><a href=\"#\">A propos</a></li>
+                </ul>
+            </section>
+        </div>
         ";
-        // line 59
+        // line 67
         $this->displayBlock('body', $context, $blocks);
-        // line 61
+        // line 69
         echo "
         <footer class='footer'>
         </footer>
+        <!--Animation volet jQuery -->
+        <script>
+            \$(document).ready(function () {
+                \$('.stats').hide();
+                \$('.toggle-button').on('click', function () {
+                    \$('.stats').slideToggle('left');
+                });
+                var \$toggleButton = \$('.toggle-button');
+
+                // Hamburger button
+                \$toggleButton.on('click', function () {
+                    \$(this).toggleClass('button-open');
+                });
+            });
+        </script>
+        <!--Script slideout.js -->
+        <script src=\"";
+        // line 88
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.11/slideout.min.js"), "html", null, true);
+        echo "\"></script>
+
     </body>
 </html>";
         
-        $__internal_b7eed60a0834744c8b6d9a94d6fe07e64f2a986cc41fb48b2cb0866d578d9828->leave($__internal_b7eed60a0834744c8b6d9a94d6fe07e64f2a986cc41fb48b2cb0866d578d9828_prof);
+        $__internal_700a4e104d5ae0e78a4501289416d5a33fe4aa5a55000487ccaf74584742c592->leave($__internal_700a4e104d5ae0e78a4501289416d5a33fe4aa5a55000487ccaf74584742c592_prof);
 
     }
 
     // line 28
     public function block_head($context, array $blocks = array())
     {
-        $__internal_8b11f215548141645345b467c2bdff173f8b95124b3d4d752cf779b374cab2a0 = $this->env->getExtension("native_profiler");
-        $__internal_8b11f215548141645345b467c2bdff173f8b95124b3d4d752cf779b374cab2a0->enter($__internal_8b11f215548141645345b467c2bdff173f8b95124b3d4d752cf779b374cab2a0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "head"));
+        $__internal_da8ab90a1788752b68e9b3ab4a4789257534d08758791ce96da60fed763b2144 = $this->env->getExtension("native_profiler");
+        $__internal_da8ab90a1788752b68e9b3ab4a4789257534d08758791ce96da60fed763b2144->enter($__internal_da8ab90a1788752b68e9b3ab4a4789257534d08758791ce96da60fed763b2144_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "head"));
 
         // line 29
         echo "        ";
         
-        $__internal_8b11f215548141645345b467c2bdff173f8b95124b3d4d752cf779b374cab2a0->leave($__internal_8b11f215548141645345b467c2bdff173f8b95124b3d4d752cf779b374cab2a0_prof);
+        $__internal_da8ab90a1788752b68e9b3ab4a4789257534d08758791ce96da60fed763b2144->leave($__internal_da8ab90a1788752b68e9b3ab4a4789257534d08758791ce96da60fed763b2144_prof);
 
     }
 
-    // line 59
+    // line 67
     public function block_body($context, array $blocks = array())
     {
-        $__internal_5f88ccb6498c2f5a2f674004bad28a967959b32309d4458d057113fe697650b9 = $this->env->getExtension("native_profiler");
-        $__internal_5f88ccb6498c2f5a2f674004bad28a967959b32309d4458d057113fe697650b9->enter($__internal_5f88ccb6498c2f5a2f674004bad28a967959b32309d4458d057113fe697650b9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_050e23ec84f3e144a4dcaa57ab89af088566eaffca19ba89931c3a5131edc090 = $this->env->getExtension("native_profiler");
+        $__internal_050e23ec84f3e144a4dcaa57ab89af088566eaffca19ba89931c3a5131edc090->enter($__internal_050e23ec84f3e144a4dcaa57ab89af088566eaffca19ba89931c3a5131edc090_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 60
+        // line 68
         echo "        ";
         
-        $__internal_5f88ccb6498c2f5a2f674004bad28a967959b32309d4458d057113fe697650b9->leave($__internal_5f88ccb6498c2f5a2f674004bad28a967959b32309d4458d057113fe697650b9_prof);
+        $__internal_050e23ec84f3e144a4dcaa57ab89af088566eaffca19ba89931c3a5131edc090->leave($__internal_050e23ec84f3e144a4dcaa57ab89af088566eaffca19ba89931c3a5131edc090_prof);
 
     }
 
@@ -166,7 +195,7 @@ class __TwigTemplate_8a38a5e78d539d6b55ab6efee5684c07011885e5bdb075f820ac25522c0
 
     public function getDebugInfo()
     {
-        return array (  151 => 60,  145 => 59,  138 => 29,  132 => 28,  121 => 61,  119 => 59,  108 => 51,  104 => 50,  100 => 49,  79 => 30,  77 => 28,  72 => 26,  65 => 22,  59 => 19,  55 => 18,  51 => 17,  41 => 10,  37 => 9,  33 => 8,  24 => 1,);
+        return array (  180 => 68,  174 => 67,  167 => 29,  161 => 28,  150 => 88,  129 => 69,  127 => 67,  108 => 51,  104 => 50,  100 => 49,  79 => 30,  77 => 28,  72 => 26,  65 => 22,  59 => 19,  55 => 18,  51 => 17,  41 => 10,  37 => 9,  33 => 8,  24 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -227,10 +256,36 @@ class __TwigTemplate_8a38a5e78d539d6b55ab6efee5684c07011885e5bdb075f820ac25522c0
 /*     </header>*/
 /* */
 /*     <body>*/
+/*         <div id="mySidenav" class="sidenav">*/
+/*             <section class="stats">*/
+/*                 <ul style="margin-top: 150px; line-height: 50px; font-size: 1.5em;">*/
+/*                     <li><a href="#">Statistiques</a></li>*/
+/*                     <li><a href="#">A propos</a></li>*/
+/*                 </ul>*/
+/*             </section>*/
+/*         </div>*/
 /*         {% block body %}*/
 /*         {% endblock %}*/
 /* */
 /*         <footer class='footer'>*/
 /*         </footer>*/
+/*         <!--Animation volet jQuery -->*/
+/*         <script>*/
+/*             $(document).ready(function () {*/
+/*                 $('.stats').hide();*/
+/*                 $('.toggle-button').on('click', function () {*/
+/*                     $('.stats').slideToggle('left');*/
+/*                 });*/
+/*                 var $toggleButton = $('.toggle-button');*/
+/* */
+/*                 // Hamburger button*/
+/*                 $toggleButton.on('click', function () {*/
+/*                     $(this).toggleClass('button-open');*/
+/*                 });*/
+/*             });*/
+/*         </script>*/
+/*         <!--Script slideout.js -->*/
+/*         <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.11/slideout.min.js') }}"></script>*/
+/* */
 /*     </body>*/
 /* </html>*/

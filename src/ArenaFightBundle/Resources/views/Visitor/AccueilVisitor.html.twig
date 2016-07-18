@@ -1,14 +1,7 @@
 {% extends "ArenaFightBundle:Visitor:LayoutVisitor.html.twig" %} 
 {% block body %}
     <div class="container-fluid">
-        <div id="mySidenav" class="sidenav">
-            <section class="stats">
-                <ul style="margin-top: 150px; line-height: 50px; font-size: 1.5em;">
-                    <li><a href="#">Statistiques</a></li>
-                    <li><a href="#">A propos</a></li>
-                </ul>
-            </section>
-        </div>
+        
         <ul class="cb-slideshow" style="z-index: -999999999999 !important;">
             <li><span>Image 01</span>
                 <div>
@@ -47,29 +40,6 @@
         <link rel="stylesheet" href="{{ asset('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css') }}">
         <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js') }}"></script>
         <!-- Script pour button -->
-        <script>
-            $(document).ready(function () {
-
-                var $toggleButton = $('.toggle-button');
-
-                // Hamburger button
-                $toggleButton.on('click', function () {
-                    $(this).toggleClass('button-open');
-                });
-            });
-        </script>
-        <!--Animation volet jQuery -->
-        <script>
-            $(document).ready(function () {
-                $('.stats').hide();
-                $('.toggle-button').on('click', function () {
-                    $('.stats').slideToggle('left');
-
-
-                });
-            });
-        </script>
-        <!--Script slideout.js -->
-        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.11/slideout.min.js') }}"></script>
-
+        
+        
     {% endblock %}

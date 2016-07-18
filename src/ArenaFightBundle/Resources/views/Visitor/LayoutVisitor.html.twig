@@ -56,10 +56,36 @@
     </header>
 
     <body>
+        <div id="mySidenav" class="sidenav">
+            <section class="stats">
+                <ul style="margin-top: 150px; line-height: 50px; font-size: 1.5em;">
+                    <li><a href="#">Statistiques</a></li>
+                    <li><a href="#">A propos</a></li>
+                </ul>
+            </section>
+        </div>
         {% block body %}
         {% endblock %}
 
         <footer class='footer'>
         </footer>
+        <!--Animation volet jQuery -->
+        <script>
+            $(document).ready(function () {
+                $('.stats').hide();
+                $('.toggle-button').on('click', function () {
+                    $('.stats').slideToggle('left');
+                });
+                var $toggleButton = $('.toggle-button');
+
+                // Hamburger button
+                $toggleButton.on('click', function () {
+                    $(this).toggleClass('button-open');
+                });
+            });
+        </script>
+        <!--Script slideout.js -->
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.11/slideout.min.js') }}"></script>
+
     </body>
 </html>

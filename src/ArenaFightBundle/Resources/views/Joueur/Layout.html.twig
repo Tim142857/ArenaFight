@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{#<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -56,6 +56,98 @@
         </div>
     </body>
 </html>
+#}<!DOCTYPE html>
+<html lang="en">
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ asset('bundles/notaire/images/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/bootstrap.min.css') }}">
 
+        <!-- Intégration des propriétés Titouan-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico">
 
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/arenafight/style/demo.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('bundles/arenafight/style/style3.css') }}" />
+        <script type="text/javascript" src="{{asset('bundles/arenafight/js/modernizr.custom.86080.js') }}"></script>
+
+        <!--Test Titouan -->
+        <link rel="stylesheet" href="{{ asset('bundles/arenafight/style/test.css') }}">
+
+        <!--End Add files Titouan -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="{{ asset('bundles/arenafight/js/bootstrap.min.js') }}"></script>
+
+        {% block head %}
+        {% endblock %}
+
+        <title>Accueil</title>
+
+    </head>
+
+    <header>
+        <!--<div class="container"> -->
+        <nav class="nav">
+            <!-- Button hamburger -->
+            <div class="toggle-button" style="position: relative; top: 40px;left: 30px; z-index: 400000;">
+                <div class="wrapper">
+                    <div class="menu-bar menu-bar-top"></div>
+                    <div class="menu-bar menu-bar-middle"></div>
+                    <div class="menu-bar menu-bar-bottom"></div>
+                </div>
+            </div>
+
+            <!--END Button -->
+            <ul class="menu_header">
+                <li><a href="{{ url('joueur_profil') }}">Profil</a></li>
+                <li><a href="{{ url('fos_user_security_logout') }}">Deconnexion</a></li>
+            </ul>
+        </nav>
+        <!-- Close div container </div> -->
+    </header>
+
+    <body>
+        <div id="mySidenav" class="sidenav">
+            <section class="stats">
+
+                <ul style="margin-top: 150px; line-height: 50px; font-size: 1.5em;">
+                    <li id=""><a href="{{ url('joueur_accueil_persos') }}">PERSONNAGES</a></li>
+                    <li><a href="">Inventaire</a></li>
+                    <li><a href="">Boutique</a></li>
+                    <li id=""><a href="{{ url('joueur_quetes') }}">QUETES</a></li>
+                    <li id=""><a href="">COMBATS</a></li>
+                    <li id=""><a href="">CLASSEMENTS</a></li>
+                    <li id=""><a href="">GEMMES</a></li>
+                    <li><a href="#">Support</a></li>
+            </section>
+        </div>
+        {% block body %}
+        {% endblock %}
+
+        <footer class='footer'>
+        </footer>
+        <!--Animation volet jQuery -->
+        <script>
+            $(document).ready(function () {
+                $('.stats').hide();
+                $('.toggle-button').on('click', function () {
+                    $('.stats').slideToggle('left');
+                });
+                var $toggleButton = $('.toggle-button');
+
+                // Hamburger button
+                $toggleButton.on('click', function () {
+                    $(this).toggleClass('button-open');
+                });
+            });
+        </script>
+        <!--Script slideout.js -->
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.11/slideout.min.js') }}"></script>
+
+    </body>
+</html>
