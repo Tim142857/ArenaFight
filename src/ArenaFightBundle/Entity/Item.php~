@@ -339,4 +339,12 @@ class Item {
         return $this->joueurs;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->joueurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

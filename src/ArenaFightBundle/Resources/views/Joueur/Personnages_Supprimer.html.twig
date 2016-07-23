@@ -1,7 +1,7 @@
 {% extends "ArenaFightBundle:Joueur:Layout_Page_Personnages.html.twig" %}
 {% block bodyPerso %}
-    <form href="{{ url('joueur_supprimer_perso') }}" method="post">
-        <select>
+    <form action="{{ url('joueur_supprimer_perso') }}" method="post">
+        <select name="idPerso">
             {% for perso in persos %}
                 <option value="{{ perso.getId() }}">{{ perso.getNom() }}</option>
             {% endfor %}

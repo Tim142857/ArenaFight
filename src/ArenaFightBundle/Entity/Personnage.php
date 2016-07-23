@@ -27,6 +27,13 @@ class Personnage {
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fichierImage", type="string", length=255)
+     */
+    private $fichierImage;
 
     /**
      * @var int
@@ -775,4 +782,28 @@ class Personnage {
         return $this->chanceCritiqueTotale;
     }
 
+
+    /**
+     * Set fichierImage
+     *
+     * @param string $fichierImage
+     *
+     * @return Personnage
+     */
+    public function setFichierImage($fichierImage)
+    {
+        $this->fichierImage = $fichierImage;
+    
+        return $this;
+    }
+
+    /**
+     * Get fichierImage
+     *
+     * @return string
+     */
+    public function getFichierImage()
+    {
+        return $this->fichierImage;
+    }
 }

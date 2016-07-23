@@ -1,12 +1,44 @@
 {% extends "ArenaFightBundle:Joueur:Layout_Page_Personnages.html.twig" %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/arenafight/jqueryui/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/arenafight/jqueryui/jquery-ui.structure.min.css') }}" />
+    <script type="text/javascript" src="{{ asset('bundles/arenafight/jqueryui/jquery-ui.min.js') }}"></script>
+{% endblock %}
 {% block bodyPerso %}
     {{ form(form) }}
-    {#<form href="{{ url('joueur_supprimer_perso') }}" method="post">
-        <select>
-            {% for perso in persos %}
-                <option value="{{ perso.getId() }}">{{ perso.getNom() }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit" class="btn btn-primary">Supprimer</button>
-    </form>#}
+
+
+    <script>
+        $(document).ready(function () {
+            $('option').each(function () {
+                $(this).attr('data-class', $(this).text());
+            });
+
+            $(function () {
+                $.widget("custom.iconselectmenu", $.ui.selectmenu, {
+                    _renderItem: function (ul, item) {
+                        var li = $("<li>", {text: item.label});
+
+                        if (item.disabled) {
+                            li.addClass("ui-state-disabled");
+                        }
+
+                        $("<span>", {
+                            style: item.element.attr("data-style"),
+                            "class": "ui-icon " + item.element.attr("data-class")
+                        })
+                                .appendTo(li);
+
+                        return li.appendTo(ul);
+                    }
+                });
+                $("#add_perso_fichierImage")
+                        .iconselectmenu()
+                        .iconselectmenu("menuWidget")
+                        .addClass("ui-menu-icons customicons");
+                $('.ui-selectmenu-button.ui-widget.ui-state-default.ui-corner-all').width('100%');
+            });
+
+        });
+    </script>
 {% endblock %}

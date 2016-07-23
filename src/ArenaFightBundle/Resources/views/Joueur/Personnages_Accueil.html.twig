@@ -1,15 +1,34 @@
 {% extends "ArenaFightBundle:Joueur:Layout_Page_Personnages.html.twig" %}
+{% block head %}
+    <script src="{{ asset('bundles/arenafight/paginJs/jquery.twbsPagination.min.js') }}"></script>
+{% endblock %}
 {% block bodyPerso %}
     {% for perso in persos %}
-        <p>
-        <h2>Nom: {{ perso.getNom() }}</h2><br/>
-        Race: {{ perso.getRace.getNom() }}<br/>
-        Vie: {{ perso.getVie() }}<br/>
-        Attaque: {{ perso.getAttaque() }}<br/>
-        Equipements:
-        {% for item in perso.getItems() %}
-            Nom item: {{ item.getNom() }} 
-        {% endfor %}
-    </p>
-{% endfor %}
+        <div id="perso-{{ loop.index }}" class="hidden infos-perso">
+            <h2>Nom:<span id="nom-perso">{{ perso.getNom() }}</span></h2><br/>
+            <p>
+                Race: <span id="race-perso">{{ perso.getRace.getNom() }}</span><br/>
+                Vie: <span id="vie-perso">{{ perso.getVie() }}</span><br/>
+                Attaque: <span id="attaque-perso">{{ perso.getAttaque() }}</span><br/>
+            </p>
+            <img src="{{ asset('bundles/arenafight/images/images-persos/'~perso.getFichierimage()) }}" style="width:60px; height:80px;">
+        </div>
+    {% endfor %}
+    <ul id="pagination-demo" class="pagination-sm">
+    </ul>
+    <script>
+        $(document).ready(function () {
+        if ({{ persos|length }} > 0){
+        $('#pagination-demo').twbsPagination({
+        totalPages:{{ persos|length }},
+                visiblePages: 1,
+                onPageClick: function (event, page) {
+                $(".infos-perso").addClass("hidden");
+                $('#perso-' + page).removeClass("hidden");
+                }
+        });
+        }
+        });
+    </script>
+
 {% endblock %}

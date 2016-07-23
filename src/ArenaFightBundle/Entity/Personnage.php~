@@ -27,6 +27,13 @@ class Personnage {
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fichierImage", type="string", length=255)
+     */
+    private $fichierImage;
 
     /**
      * @var int
